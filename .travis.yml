@@ -1,0 +1,29 @@
+language: java
+install: true
+
+jdk:
+  - openjdk11
+
+services:
+  - docker
+
+addons:
+  sonarcloud:
+    organization: "gavarava-github"
+    token: $SONAR_TOKEN
+
+git:
+  depth: false
+
+script:
+  - ./gradlew
+  - sonar-scanner
+  - docker build -t $DOCKER_USERNAME/rockpaperscissors:0.0.1 .
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    tags: true
+    branch: master
+
