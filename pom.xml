@@ -2,18 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.contactsapi</groupId>
-    <artifactId>contacts-api</artifactId>
+    <groupId>com.contactsapp</groupId>
+    <artifactId>contacts-app</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>ContactsApi</name>
+    <name>ContactsApplication</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>1.3.12</dropwizard.version>
-        <mainClass>com.contactsapi.ContactsApiApplication</mainClass>
+        <mainClass>com.contactsapp.ContactsApplication</mainClass>
     </properties>
 
     <dependencyManagement>

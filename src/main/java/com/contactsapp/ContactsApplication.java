@@ -1,13 +1,13 @@
-package com.contactsapi;
+package com.contactsapp;
 
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class ContactsApiApplication extends Application<ContactsApiConfiguration> {
+public class ContactsApplication extends Application<ContactsAppConfiguration> {
 
     public static void main(final String[] args) throws Exception {
-        new ContactsApiApplication().run(args);
+        new ContactsApplication().run(args);
     }
 
     @Override
@@ -16,12 +16,12 @@ public class ContactsApiApplication extends Application<ContactsApiConfiguration
     }
 
     @Override
-    public void initialize(final Bootstrap<ContactsApiConfiguration> bootstrap) {
+    public void initialize(final Bootstrap<ContactsAppConfiguration> bootstrap) {
         // TODO: application initialization
     }
 
     @Override
-    public void run(final ContactsApiConfiguration configuration,
+    public void run(final ContactsAppConfiguration configuration,
                     final Environment environment) {
         // TODO: implement application
     }
