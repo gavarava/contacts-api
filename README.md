@@ -1,6 +1,8 @@
-# ContactsApi [![Build Status](https://travis-ci.org/gavarava/contacts-api.svg?branch=master)](https://travis-ci.org/gavarava/contacts-api)  
+# Contacts Application [![Build Status](https://travis-ci.org/gavarava/contacts-api.svg?branch=master)](https://travis-ci.org/gavarava/contacts-api)  
 
-How to start the ContactsApi application
+A simple Microservice to List, Add, Delete contacts using Dropwizard framework.
+
+How to start the Contacts application
 ---
 
 1. Run `mvn clean install` to build your application
