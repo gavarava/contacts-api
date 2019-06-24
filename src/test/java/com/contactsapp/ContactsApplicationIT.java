@@ -18,11 +18,11 @@ class ContactsApplicationIT {
         ResourceHelpers.resourceFilePath(DEPLOYMENT_CONFIGURATION));
 
     @Test
-    void shouldRespondToHealthEndpointOnStartup() {
+    void shouldRespondToHealthcheckResourceOnStartup() {
         CONTACTS_APP_FOR_TEST.before();
         Client client = new JerseyClientBuilder().build();
         Response response = client.target(
-            String.format("http://localhost:%d/healthcheck", CONTACTS_APP_FOR_TEST.getLocalPort()))
+            String.format("http://localhost:%d/healthcheck", CONTACTS_APP_FOR_TEST.getAdminPort()))
             .request()
             .get();
         assertThat(response.getStatus(), is(200));

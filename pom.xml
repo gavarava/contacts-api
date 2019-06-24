@@ -32,6 +32,15 @@
 
   <dependencies>
     <dependency>
+      <groupId>io.dropwizard</groupId>
+      <artifactId>dropwizard-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ru.vyarus</groupId>
+      <artifactId>dropwizard-guicey</artifactId>
+      <version>4.2.2</version>
+    </dependency>
+    <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java8</artifactId>
       <version>4.4.0</version>
@@ -42,10 +51,6 @@
       <artifactId>cucumber-junit</artifactId>
       <version>4.4.0</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.dropwizard</groupId>
-      <artifactId>dropwizard-core</artifactId>
     </dependency>
     <dependency>
       <groupId>io.dropwizard</groupId>

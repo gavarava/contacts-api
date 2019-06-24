@@ -1,5 +1,6 @@
 package com.contactsapp;
 
+import com.contactsapp.service.health.ContactsAppHealthCheck;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -22,8 +23,8 @@ public class ContactsApplication extends Application<ContactsAppConfiguration> {
 
     @Override
     public void run(final ContactsAppConfiguration configuration,
-                    final Environment environment) {
-        // TODO: implement application
+        final Environment environment) {
+        environment.healthChecks().register("healthcheck", new ContactsAppHealthCheck());
     }
 
 }
