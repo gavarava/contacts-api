@@ -18,7 +18,7 @@ public class ContactsApplication extends Application<ContactsAppConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<ContactsAppConfiguration> bootstrap) {
-        // TODO: application initialization
+        // application initialization happens here, it includes things like regestring endpoints and getting in services
     }
 
     @Override

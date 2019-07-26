@@ -3,6 +3,9 @@ Feature: Add new Contact
   As a Contacts Application user
   I want to be able to add a new contact to the Contacts Application
 
+  Background: A running instance of the Contacts Application
+    Given a running Contacts Application Server
+
   Scenario Outline: Add new contact
     Given a JSON object with <firstName>, <lastName>, <address>, <postcode>, <city>, <phoneNumber>
     When I issue a POST to /contacts
