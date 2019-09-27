@@ -10,9 +10,9 @@ public class ContactsAppConfiguration extends Configuration {
 
     @Valid
     @NotNull
+    @JsonProperty("database")
     private DataSourceFactory database = new DataSourceFactory();
 
-    @JsonProperty("database")
     public DataSourceFactory getDataSourceFactory() {
         return database;
     }
