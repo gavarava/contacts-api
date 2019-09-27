@@ -6,6 +6,6 @@ Feature: Healthcheck
   Background: A running instance of the Contacts Application
     Given a running Contacts Application Server
 
-  Scenario:
-    When I issue a POST to /healthcheck
-    Then I receive "" response
+  Scenario: Issuing a GET on healthcheck endpoint on the admin port responds OK
+    When a client issues a GET to "/healthcheck"
+    Then I receive "200" response

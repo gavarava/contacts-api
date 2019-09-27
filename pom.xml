@@ -40,6 +40,17 @@
       <artifactId>dropwizard-guicey</artifactId>
       <version>4.2.2</version>
     </dependency>
+    <dependency>
+      <groupId>io.dropwizard</groupId>
+      <artifactId>dropwizard-hibernate</artifactId>
+      <version>${dropwizard.version}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+    <dependency>
+      <groupId>postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>9.1-901-1.jdbc4</version>
+    </dependency>
     <!-- Test Dependencies -->
     <dependency>
       <groupId>io.dropwizard</groupId>
