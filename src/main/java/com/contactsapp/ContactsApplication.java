@@ -37,8 +37,6 @@ public class ContactsApplication extends Application<ContactsAppConfiguration> {
     public void run(final ContactsAppConfiguration configuration,
         final Environment environment) {
         environment.healthChecks().register("healthcheck", new ContactsAppHealthCheck());
-        /*final PersonDAO dao = new PersonDAO(hibernate.getSessionFactory());
-        environment.jersey().register(new UserResource(dao));*/
     }
 
 }

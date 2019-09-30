@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     plugin = {"pretty"},
-    tags = {"~@ignore"},
     features = "features/health_check.feature",
     glue = "com.contactsapp.bdd"
 )
