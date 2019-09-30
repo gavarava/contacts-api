@@ -1,4 +1,4 @@
-package com.contactsapp.service.health;
+package com.contactsapp.health;
 
 import ru.vyarus.dropwizard.guice.module.installer.feature.health.NamedHealthCheck;
 

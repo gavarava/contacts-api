@@ -1,7 +1,7 @@
 package com.contactsapp;
 
-import com.contactsapp.api.json.Contact;
-import com.contactsapp.service.health.ContactsAppHealthCheck;
+import com.contactsapp.api.Contact;
+import com.contactsapp.health.ContactsAppHealthCheck;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
