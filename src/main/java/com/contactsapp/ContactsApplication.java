@@ -2,6 +2,7 @@ package com.contactsapp;
 
 import com.contactsapp.api.Contact;
 import com.contactsapp.health.ContactsAppHealthCheck;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
@@ -31,11 +32,14 @@ public class ContactsApplication extends Application<ContactsAppConfiguration> {
     public void initialize(final Bootstrap<ContactsAppConfiguration> bootstrap) {
         // application initialization happens here, it includes things like regestring endpoints and getting in services
         bootstrap.addBundle(hibernate);
+        // Jackson Databind feature settings can be changed this way
+        bootstrap.getObjectMapper().disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     }
 
     @Override
     public void run(final ContactsAppConfiguration configuration,
         final Environment environment) {
+        // Register a Resource
         environment.healthChecks().register("healthcheck", new ContactsAppHealthCheck());
     }
 
