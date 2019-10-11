@@ -2,12 +2,14 @@ package com.contactsapp;
 
 import com.contactsapp.api.Contact;
 import com.contactsapp.health.ContactsAppHealthCheck;
+import com.contactsapp.modules.DatabaseConnectionServiceModule;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import ru.vyarus.dropwizard.guice.GuiceBundle;
 
 public class ContactsApplication extends Application<ContactsAppConfiguration> {
 
@@ -30,6 +32,11 @@ public class ContactsApplication extends Application<ContactsAppConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<ContactsAppConfiguration> bootstrap) {
+        // enableAutoConfig for com.contactsapp.service package
+        bootstrap.addBundle(GuiceBundle.builder()
+            .enableAutoConfig("com.contactsapp.service")
+            .modules(new DatabaseConnectionServiceModule())
+            .build());
         // application initialization happens here, it includes things like regestring endpoints and getting in services
         bootstrap.addBundle(hibernate);
         // Jackson Databind feature settings can be changed this way
