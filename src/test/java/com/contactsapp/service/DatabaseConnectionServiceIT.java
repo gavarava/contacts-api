@@ -52,6 +52,13 @@ public class DatabaseConnectionServiceIT {
     }
 
     @Test
+    void shouldThrowExceptionWhenConnectionIsNotInitialized() {
+        DataSourceFactory dataSourceFactoryFromConfiguration = configuration.getDataSourceFactory();
+        target = new DatabaseConnectionService(dataSourceFactoryFromConfiguration);
+        assertThrows(IllegalAccessException.class, () -> target.getConnection());
+    }
+
+    @Test
     void shouldThrowExceptionWhenNotAbleToConnectToDatabase() {
         // Given
         DataSourceFactory dataSourceFactoryFromConfiguration = configuration.getDataSourceFactory();
