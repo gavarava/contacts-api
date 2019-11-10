@@ -2,6 +2,7 @@ package com.contactsapp;
 
 import com.contactsapp.api.Contact;
 import com.contactsapp.health.ContactsAppHealthCheck;
+import com.contactsapp.modules.ContactsServiceModule;
 import com.contactsapp.modules.DatabaseConnectionServiceModule;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import io.dropwizard.Application;
@@ -34,8 +35,8 @@ public class ContactsApplication extends Application<ContactsAppConfiguration> {
     public void initialize(final Bootstrap<ContactsAppConfiguration> bootstrap) {
         // enableAutoConfig for com.contactsapp.service package
         bootstrap.addBundle(GuiceBundle.builder()
-            .enableAutoConfig("com.contactsapp.service")
-            .modules(new DatabaseConnectionServiceModule())
+            .enableAutoConfig("com.contactsapp.service", "com.contactsapp.resources")
+            .modules(new DatabaseConnectionServiceModule(), new ContactsServiceModule())
             .build());
         // application initialization happens here, it includes things like regestring endpoints and getting in services
         bootstrap.addBundle(hibernate);
