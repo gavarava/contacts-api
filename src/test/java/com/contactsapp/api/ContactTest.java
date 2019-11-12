@@ -3,6 +3,7 @@ package com.contactsapp.api;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,7 +25,8 @@ public class ContactTest {
 
     @Test
     public void shouldBePossibleToDeserializeFromJSONToPOJO() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper().enable(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY);
+
         Contact contact = mapper.readValue(TEST_CONTACT_JSON, Contact.class);
     }
 }

@@ -1,10 +1,10 @@
 package com.contactsapp.api;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.dropwizard.jackson.JsonSnakeCase;
 
-@JsonSnakeCase
+@JsonInclude(value = Include.NON_EMPTY)
 public class Contact {
 
     private String firstName;
@@ -14,14 +14,13 @@ public class Contact {
     private String city;
     private String phoneNumber;
 
-    @JsonCreator
     public Contact(
-        @JsonProperty String firstName,
-        @JsonProperty String lastName,
-        @JsonProperty String address,
-        @JsonProperty String postCode,
-        @JsonProperty String city,
-        @JsonProperty String phoneNumber) {
+        @JsonProperty("firstName") String firstName,
+        @JsonProperty("lastName") String lastName,
+        @JsonProperty("address") String address,
+        @JsonProperty("postCode") String postCode,
+        @JsonProperty("city") String city,
+        @JsonProperty("phoneNumber") String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -30,32 +29,26 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
-    @JsonProperty
     public String getFirstName() {
         return firstName;
     }
 
-    @JsonProperty
     public String getLastName() {
         return lastName;
     }
 
-    @JsonProperty
     public String getAddress() {
         return address;
     }
 
-    @JsonProperty
     public String getPostCode() {
         return postCode;
     }
 
-    @JsonProperty
     public String getCity() {
         return city;
     }
 
-    @JsonProperty
     public String getPhoneNumber() {
         return phoneNumber;
     }
