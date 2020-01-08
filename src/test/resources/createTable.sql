@@ -1,4 +1,4 @@
-CREATE TABLE contacts_info (
+CREATE TABLE contact_details (
    id INT NOT NULL,
    firstName VARCHAR(50) NOT NULL,
    lastname VARCHAR(50) NOT NULL,
