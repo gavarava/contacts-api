@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.contactsapp.ContactsAppConfiguration;
 import com.contactsapp.ContactsApplication;
 import com.contactsapp.api.Contact;
-import com.contactsapp.service.DatabaseConnectionService;
 import io.dropwizard.client.JerseyClientBuilder;
 import io.dropwizard.testing.DropwizardTestSupport;
 import io.dropwizard.testing.ResourceHelpers;
@@ -28,14 +27,10 @@ public class ContactsAppResourceIT {
     private static final String ENDPOINT_URL = "http://localhost:%d/";
     private static Client client;
 
-    private DatabaseConnectionService target;
-    private ContactsAppConfiguration configuration;
-
     @BeforeEach
     void setup() {
         CONTACTS_APP_FOR_TEST.before();
         client = new JerseyClientBuilder(CONTACTS_APP_FOR_TEST.getEnvironment()).build("TEST_CLIENT");
-        configuration = CONTACTS_APP_FOR_TEST.getConfiguration();
     }
 
     @Test
