@@ -7,13 +7,13 @@ database:
   driverClass: org.h2.Driver
   user: h2user
   password: h2testpassword
-  url: jdbc:h2:mem:testDb;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM 'scripts/createTable.sql'
+  url: jdbc:h2:file:~/contactsDB
   # properties specific to your JDBC driver:
   properties:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.H2Dialect
   maxWaitForConnection: 1s
-  validationQuery: "SELECT 1"
+  validationQuery: "SELECT COUNT(*) FROM contacts_info"
   # the minimum number of connections to keep open
   minSize: 8
   # the maximum number of connections to keep open

@@ -3,12 +3,13 @@ FROM openjdk:8-jre-alpine
 WORKDIR /opt/contacts-app
 
 RUN apk --no-cache add curl
-RUN curl -o h2driver.jar https://repo1.maven.org/maven2/com/h2database/h2/1.4.199/h2-1.4.199.jar
+RUN curl -o h2.jar https://repo1.maven.org/maven2/com/h2database/h2/1.4.199/h2-1.4.199.jar
 
 COPY target/libs/app/contacts-app-*.jar contacts-app.jar
-COPY src/main/resources/scripts/createTable.sql scripts/createTable.sql
+COPY src/main/resources/scripts/ scripts/
 COPY src/main/resources/deploymentConfiguration.yaml config.yaml
 
+RUN ./scripts/createDatabase.sh
 
-ENTRYPOINT ["java", "-cp", "contacts-app.jar:h2driver.jar", "com.contactsapp.ContactsApplication"]
-CMD ["server", "config.yaml"]
+# Start the H2 Database server and Application at the same time
+ENTRYPOINT ["sh", "./scripts/runApplicationAndDatabase.sh"]
