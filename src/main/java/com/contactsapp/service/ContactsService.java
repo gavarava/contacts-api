@@ -7,6 +7,8 @@ public interface ContactsService {
 
     Contact getContact(long id);
 
+    Contact createContact(Contact contact);
+
     List<Contact> getContactsByName(String name);
 
 }

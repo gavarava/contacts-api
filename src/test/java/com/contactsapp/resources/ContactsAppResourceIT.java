@@ -36,7 +36,7 @@ public class ContactsAppResourceIT {
     @Test
     void shouldReturnContactWithId() {
         Response response = client.target(
-            String.format(ENDPOINT_URL + "contact/1234", CONTACTS_APP_FOR_TEST.getLocalPort()))
+            String.format(ENDPOINT_URL + "contacts/1234", CONTACTS_APP_FOR_TEST.getLocalPort()))
             .request()
             .accept(APPLICATION_JSON)
             .get();
