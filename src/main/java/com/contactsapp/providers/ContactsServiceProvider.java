@@ -1,16 +1,16 @@
 package com.contactsapp.providers;
 
-import com.contactsapp.service.ContactsService;
-import com.contactsapp.service.DummyContactsService;
+import com.contactsapp.storage.ContactsStorage;
+import com.contactsapp.storage.InMemoryContactsStorage;
 import com.google.inject.Provider;
 
 public class ContactsServiceProvider implements
-    Provider<ContactsService> {
+    Provider<ContactsStorage> {
 
     @Override
-    public ContactsService get() {
-        // The DI Framework is deciding what Implementation to choose for the ContactsService
+    public ContactsStorage get() {
+        // The DI Framework is deciding what Implementation to choose for the ContactsStorage
         // Is it possible to configure the implementation to be picked by giving a profile ?
-        return new DummyContactsService();
+        return new InMemoryContactsStorage();
     }
 }

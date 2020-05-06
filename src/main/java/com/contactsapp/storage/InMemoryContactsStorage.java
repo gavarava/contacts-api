@@ -1,31 +1,31 @@
-package com.contactsapp.service;
+package com.contactsapp.storage;
 
-import com.contactsapp.api.Contact;
+import com.contactsapp.model.Contact;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DummyContactsService implements ContactsService {
+public class InMemoryContactsStorage implements ContactsStorage {
 
     private Map<String, Contact> contactsDataStore;
 
-    public DummyContactsService() {
+    public InMemoryContactsStorage() {
         this.contactsDataStore = new HashMap<>();
     }
 
     @Override
-    public Contact getContact(long id) {
+    public Contact getById(long id) {
         return new Contact("Alice", "Alvsson", "24 Park Avenue", "96122", "LA", "530-322-3054");
     }
 
     @Override
-    public Contact createContact(Contact contact) {
+    public Contact storeContact(Contact contact) {
         return contactsDataStore.put(String.valueOf(contact.hashCode()), contact);
     }
 
     @Override
-    public List<Contact> getContactsByName(String name) {
+    public List<Contact> getByName(String name) {
         return Arrays.asList(new Contact("Alice", "Alvsson", "24 Park Avenue", "96122", "LA", "530-322-3054"));
     }
 }

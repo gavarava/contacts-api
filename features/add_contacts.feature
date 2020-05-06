@@ -8,7 +8,7 @@ Feature: Add new Contact
 
   Scenario Outline: Add new contact
     Given a JSON object with <firstName>, <lastName>, <address>, <postcode>, <city>, <phoneNumber>
-    When I issue a POST to /contacts
+    When I issue a POST to /contacts/contact
     Then I receive a 200 Status code
     And a JSON with message "Successfully Saved"
 

@@ -36,7 +36,7 @@ class ContactsApplicationIT {
     }
 
     @Test
-    void shouldCreateContactAtLocalPort() throws JsonProcessingException {
+    void shouldStoreContact() throws JsonProcessingException {
         CONTACTS_APP_FOR_TEST.before();
         Client client = new JerseyClientBuilder().build();
         Contact contact = new Contact("Marlyin", "Mansson", "16 Grev Turegatan", "96122", "STO", "010-152-911");
@@ -44,7 +44,7 @@ class ContactsApplicationIT {
         String contactJSONString = objectMapper.writeValueAsString(contact);
         Entity<String> entity = Entity.entity(contactJSONString, MediaType.APPLICATION_JSON);
         Response response = client.target(
-            String.format("http://localhost:%d/contacts", CONTACTS_APP_FOR_TEST.getLocalPort()))
+            String.format("http://localhost:%d/contacts/contact", CONTACTS_APP_FOR_TEST.getLocalPort()))
             .request()
             .post(entity);
         assertThat(response.getStatus(), is(HttpStatus.CREATED_201));

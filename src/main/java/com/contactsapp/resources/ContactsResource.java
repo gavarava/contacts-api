@@ -1,7 +1,9 @@
 package com.contactsapp.resources;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+
 import com.contactsapp.api.Contact;
-import com.contactsapp.service.ContactsService;
+import com.contactsapp.storage.ContactsStorage;
 import com.google.inject.Inject;
 import io.dropwizard.jersey.params.LongParam;
 import javax.ws.rs.Consumes;
@@ -10,35 +12,50 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
-@Path("/")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Path("/contacts")
+@Produces(APPLICATION_JSON)
 public class ContactsResource {
 
-    private ContactsService contactsService;
+    private ContactsStorage contactsStorage;
 
     @Inject
-    public ContactsResource(ContactsService contactsService) {
-        this.contactsService = contactsService;
+    public ContactsResource(ContactsStorage contactsStorage) {
+        this.contactsStorage = contactsStorage;
     }
 
     @GET
-    @Path("contacts/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Path("contact/{id}")
+    @Produces({APPLICATION_JSON})
     public Contact getContact(@PathParam("id") LongParam id) {
-        return contactsService.getContact(id.get());
+        com.contactsapp.model.Contact contact = contactsStorage.getById(id.get());
+
+        return new com.contactsapp.api.Contact(contact.getFirstName(),
+            contact.getLastName(), contact.getAddress(), contact.getPostCode(), contact.getCity(),
+            contact.getPhoneNumber());
     }
 
     @POST
-    @Path("contacts")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Path("contact")
+    @Consumes(APPLICATION_JSON)
+    @Produces({APPLICATION_JSON})
     public Response createContact(Contact contact) {
-        Contact createdContact = contactsService.createContact(contact);
+        // Translation from DTO to a Domain Model Object
+        com.contactsapp.model.Contact newContact = new com.contactsapp.model.Contact(contact.getFirstName(),
+            contact.getLastName(), contact.getAddress(), contact.getPostCode(), contact.getCity(),
+            contact.getPhoneNumber());
+
+        com.contactsapp.model.Contact createdContact = contactsStorage.storeContact(newContact);
+
+        // Translation from Domain Model Object to a DTO
+        Contact storedContact = new Contact(createdContact.getFirstName(),
+            createdContact.getLastName(), createdContact.getAddress(), createdContact.getPostCode(),
+            createdContact.getCity(),
+            createdContact.getPhoneNumber());
+
         return Response.created(UriBuilder.fromResource(ContactsResource.class)
-            .build(createdContact)).build();
+            .build(storedContact)).build();
     }
 }

@@ -1,8 +1,7 @@
-package com.contactsapp.api;
+package com.contactsapp.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(value = Include.NON_EMPTY)
 public class Contact {
@@ -14,13 +13,8 @@ public class Contact {
     private String city;
     private String phoneNumber;
 
-    public Contact(
-        @JsonProperty("firstName") String firstName,
-        @JsonProperty("lastName") String lastName,
-        @JsonProperty("address") String address,
-        @JsonProperty("postCode") String postCode,
-        @JsonProperty("city") String city,
-        @JsonProperty("phoneNumber") String phoneNumber) {
+    public Contact(String firstName, String lastName, String address, String postCode, String city,
+        String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;

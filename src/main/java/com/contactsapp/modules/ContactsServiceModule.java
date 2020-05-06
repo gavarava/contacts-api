@@ -2,7 +2,7 @@ package com.contactsapp.modules;
 
 import com.contactsapp.ContactsAppConfiguration;
 import com.contactsapp.providers.ContactsServiceProvider;
-import com.contactsapp.service.ContactsService;
+import com.contactsapp.storage.ContactsStorage;
 import javax.inject.Singleton;
 import ru.vyarus.dropwizard.guice.module.support.DropwizardAwareModule;
 
@@ -10,7 +10,7 @@ public class ContactsServiceModule extends DropwizardAwareModule<ContactsAppConf
 
     @Override
     protected void configure() {
-        bind(ContactsService.class).toProvider(ContactsServiceProvider.class).in(Singleton.class);
+        bind(ContactsStorage.class).toProvider(ContactsServiceProvider.class).in(Singleton.class);
     }
 
 }
